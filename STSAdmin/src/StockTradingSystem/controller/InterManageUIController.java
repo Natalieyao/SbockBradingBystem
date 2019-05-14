@@ -2,8 +2,6 @@ package StockTradingSystem.controller;
 
 import StockTradingSystem.Main;
 import com.jfoenix.controls.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,12 +10,10 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class InterManageUIController extends AdminUIController {
     private Main application;
-    private ArrayList<Index> indexArrayList;
     @FXML private JFXButton setstatebtn;
     @FXML private JFXButton setlimitbtn;
     @FXML private JFXTextField JFXlimittext;
@@ -30,12 +26,12 @@ public class InterManageUIController extends AdminUIController {
     @FXML private TableColumn<Stock,Double> jfxstpricetv;    //股票价格列
     @FXML private TableColumn<Stock,String> jfxststatetv;    //股票交易状态列
     @FXML private TableColumn<Stock,String> jfxstchangetv;    //股票涨跌幅（现）列
-    @FXML private TableView<Indexdata> indextableview;
-    @FXML private TableColumn<Indexdata,String> jfxinnametv;    //指数名称列
-    @FXML private TableColumn<Indexdata,String> jfxincodetv;    //指数代码列
-    @FXML private TableColumn<Indexdata,String> jfxinnumtv;    //指数数值列
+    @FXML private TableView<Index> indextableview;
+    @FXML private TableColumn<Index,String> jfxinnametv;    //指数名称列
+    @FXML private TableColumn<Index,String> jfxincodetv;    //指数代码列
+    @FXML private TableColumn<Index,String> jfxinnumtv;    //指数数值列
     private ObservableList<Stock> stockObservableList = FXCollections.observableArrayList();
-    private ObservableList<Indexdata> indexdata = FXCollections.observableArrayList();
+    private ObservableList<Index> indexObservableList = FXCollections.observableArrayList();
 
     public void setApp(Main app) { this.application = app; }
     public Main getApp() {return this.application; }
@@ -91,20 +87,17 @@ public class InterManageUIController extends AdminUIController {
 
         // TODO 指数数据显示
         /*
-        jfxinnametv.setCellValueFactory(new PropertyValueFactory<>("指数名称"));
-        jfxincodetv.setCellValueFactory(new PropertyValueFactory<>("指数代码"));
-        jfxinnumtv.setCellValueFactory(new PropertyValueFactory<>("指数数值"));
+        jfxinnametv.setCellValueFactory(new PropertyValueFactory<>("indexName"));
+        jfxincodetv.setCellValueFactory(new PropertyValueFactory<>("indexCode"));
+        jfxinnumtv.setCellValueFactory(new PropertyValueFactory<>("indexPrice"));
 
         indextableview.setVisible(true);
         indextableview.setEditable(false);
 
         // TODO 将indexArrayList里面的数据加到indexdata中
-        indextableview.setItems(indexdata);
-        for (int i = 0; i < indexArrayList.size(); i++) {
-            indexdata.add(new Indexdata(indexArrayList.get(i)));
-        }
-         */
+        indextableview.setItems(indexObservableList);
 
+         */
         super.initialize(url, rb);
     }
 
@@ -280,10 +273,10 @@ public class InterManageUIController extends AdminUIController {
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
                 Index in = new Index();
-                in.setIndex_code(rs.getString("index_code"));
-                in.setIndex_name(rs.getString("index_name"));
-                in.setIndex_price(Double.valueOf(rs.getString("index_price")));
-                indexArrayList.add(in);
+                in.setIndexCode(rs.getString("index_code"));
+                in.setIndexName(rs.getString("index_name"));
+                in.setIndexPrice(Double.valueOf(rs.getString("index_price")));
+                indexObservableList.add(in);
             }
             conn.close();
         } catch (SQLException e){

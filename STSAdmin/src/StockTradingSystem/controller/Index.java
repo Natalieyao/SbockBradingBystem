@@ -1,15 +1,30 @@
 package StockTradingSystem.controller;
 
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+
 public class Index {
-    private String Index_code;
-    private String Index_name;
-    private double Index_price;
+    private StringProperty indexCode;
+    private StringProperty indexName;
+    private DoubleProperty indexPrice;
 
-    public double getIndex_price() { return Index_price; }
-    public String getIndex_code() { return Index_code; }
-    public String getIndex_name() { return Index_name; }
+    public Index(){
+        this.indexCode=new SimpleStringProperty("");
+        this.indexName=new SimpleStringProperty("");
+        this.indexPrice=new SimpleDoubleProperty(0);
+    }
 
-    public void setIndex_code(String index_code) { this.Index_code = index_code; }
-    public void setIndex_name(String index_name) { this.Index_name = index_name; }
-    public void setIndex_price(double index_price) { this.Index_price = index_price; }
+    public StringProperty indexCodeProperty() { return indexCode; }
+    public DoubleProperty indexPriceProperty() { return indexPrice; }
+    public StringProperty indexNameProperty() { return indexName; }
+
+    public String getIndexCode() { return indexCode.get(); }
+    public double getIndexPrice() { return indexPrice.get(); }
+    public String getIndexName() { return indexName.get(); }
+
+    public void setIndexName(String indexName) { this.indexName.set(indexName); }
+    public void setIndexPrice(double indexPrice) { this.indexPrice.set(indexPrice); }
+    public void setIndexCode(String indexCode) { this.indexCode.set(indexCode); }
 }
