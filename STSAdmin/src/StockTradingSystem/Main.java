@@ -48,6 +48,27 @@ public class Main extends Application {
         changePasswordUI.setApp(this);
     }
 
+    public void createConfirmWarningUI() throws Exception {
+        floatStage = new Stage();
+        floatStage.setTitle("Warning");
+        floatStage.setResizable(false);
+        FXMLLoader loader = new FXMLLoader();
+        InputStream in = Main.class.getResourceAsStream("fxml/ConfirmWarningUI.fxml");
+        loader.setBuilderFactory(new JavaFXBuilderFactory());
+        loader.setLocation(Main.class.getResource("fxml/ConfirmWarningUI.fxml"));
+        AnchorPane page;
+        try {
+            page = loader.load();
+        } finally {
+            in.close();
+        }
+        Scene scene = new Scene(page);
+        floatStage.setScene(scene);
+        floatStage.show();
+        ConfirmWarningUIController confirmWarningUI= loader.getController();
+        confirmWarningUI.setApp(this);
+    }
+
     public void gotoAdminLoginUI() throws Exception {
         stage = new Stage();
         stage.setResizable(false);
@@ -81,6 +102,13 @@ public class Main extends Application {
         stage.setResizable(true);
         InterManageUIController interManageUI = (InterManageUIController)replaceSceneContent("fxml/InterManageUI.fxml");
         interManageUI.setApp(this);
+    }
+
+    // TODO 到详细界面
+    public void gotoStockDetailUI() throws Exception {
+        stage.setResizable(true);
+        StockDetailUIController stockDetailUI = (StockDetailUIController)replaceSceneContent("fxml/StockDetailUI.fxml");
+        stockDetailUI.setApp(this);
     }
 
     private Initializable replaceSceneContent(String fxml) throws Exception {
