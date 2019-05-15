@@ -9,6 +9,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.sql.*;
@@ -69,13 +70,13 @@ public class InterManageUIController extends AdminUIController {
     public void bindstock(){
         // TODO 股票数据绑定TableView
         jfxstnametv.setCellValueFactory(new PropertyValueFactory<>("stockName"));
-        jfxstlimittv.setCellValueFactory(new PropertyValueFactory<>("最大涨跌幅"));
+        jfxstlimittv.setCellValueFactory(new PropertyValueFactory<>("stockLimit"));
         jfxstcodetv.setCellValueFactory(new PropertyValueFactory<>("stockCode"));
         jfxstceiltv.setCellValueFactory(new PropertyValueFactory<>("ceilingPrice"));
         jfxstfloortv.setCellValueFactory(new PropertyValueFactory<>("floorPrice"));
         jfxstpricetv.setCellValueFactory(new PropertyValueFactory<>("stockPrice"));
         jfxststatetv.setCellValueFactory(new PropertyValueFactory<>("stockState"));
-        jfxstchangetv.setCellValueFactory(new PropertyValueFactory<>("涨跌幅"));
+        jfxstchangetv.setCellValueFactory(new PropertyValueFactory<>("stockChange"));
 
         stocktableview.setVisible(true);
         stocktableview.setEditable(false);
@@ -95,25 +96,27 @@ public class InterManageUIController extends AdminUIController {
     }
 
     public void clickintodetail() throws Exception{
-        System.out.println("success");
         // TODO 将选中股票的isSelect状态设置为选中
         // 但是好像是改了之后才监听到的？？？？？？？？？
 
         stocktableview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Stock>() {
-                    @Override
-                    public void changed(ObservableValue<? extends Stock> observable, Stock oldValue, Stock newValue) {
-                        newValue.setIsselect(true);
-                        System.out.println(newValue.getStockCode());
-                    }
-                }
-                );
-        application.stage.close();
-        getApp().gotoStockDetailUI();
+            @Override
+            public void changed(ObservableValue<? extends Stock> observable, Stock oldValue, Stock newValue) {
+                newValue.setIsselect(true);
+                System.out.println(newValue.getStockCode());
+            }
+        });
+        
+        //application.stage.close();
+        //getApp().gotoStockDetailUI();
     }
-    
+
     public void setstockstate(){
         // TODO 设置股票交易状态
-        for (int i = 0; i < stockObservableList.size()&&stockObservableList.get(i).isIsselect()==true; i++){
+        for (int i = 0; i < stockObservableList.size(); i++){
+            if (!stockObservableList.get(i).isIsselect()){
+                continue;
+            }
             String oldstate=stockObservableList.get(i).getStockState();
             if(oldstate.equals("正常交易")){
                 stockObservableList.get(i).setStockState("暂停交易");

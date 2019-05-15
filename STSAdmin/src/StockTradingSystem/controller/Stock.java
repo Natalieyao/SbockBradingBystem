@@ -13,6 +13,7 @@ public class Stock {
     private DoubleProperty floorPrice;
     private StringProperty stockState;
     //private DoubleProperty stockLimit;
+    //private DoubleProperty stockChange;
     private boolean isselect;
 
     public Stock(String stockCode,String stockName,double stockPrice,double ceilingPrice,double floorPrice,String stockState){
@@ -32,6 +33,7 @@ public class Stock {
         this.floorPrice=new SimpleDoubleProperty(0);
         this.stockState=new SimpleStringProperty("");
         //this.stockLimit=new SimpleDoubleProperty(0);
+        //this.stockChange=new SimpleDoubleProperty(0);
     }
 
     public void setStockCode(String stockCode) { this.stockCode.set(stockCode); }
@@ -41,6 +43,7 @@ public class Stock {
     public void setStockPrice(double stockPrice) { this.stockPrice.set(stockPrice); }
     public void setStockState(String stockState) { this.stockState.set(stockState); }
     //public void setStockLimit(double stockLimit) { this.stockLimit.set(stockLimit); }
+    //public void setStockChange(double stockChange) { this.stockChange.set(stockChange); }
     public boolean isIsselect() { return isselect; }
 
     public double getStockPrice() { return stockPrice.get(); }
@@ -49,6 +52,7 @@ public class Stock {
     public double getCeilingPrice() { return ceilingPrice.get(); }
     public double getFloorPrice() { return floorPrice.get(); }
     public String getStockState() { return stockState.get(); }
+    //public double getStockChange() { return stockChange.get(); }
     //public double getStockLimit() { return stockLimit.get(); }
 
     public DoubleProperty ceilingPriceProperty() { return ceilingPrice; }
@@ -58,5 +62,6 @@ public class Stock {
     public DoubleProperty stockPriceProperty() { return stockPrice; }
     public StringProperty stockStateProperty() { return stockState; }
     //public DoubleProperty stockLimitProperty() { return stockLimit; }
+    //public DoubleProperty stockChangeProperty() { return stockChange; }
     public void setIsselect(boolean isselect) { this.isselect = isselect; }
 }
