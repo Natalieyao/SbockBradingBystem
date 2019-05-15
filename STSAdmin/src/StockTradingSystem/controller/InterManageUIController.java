@@ -2,6 +2,8 @@ package StockTradingSystem.controller;
 
 import StockTradingSystem.Main;
 import com.jfoenix.controls.*;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -55,13 +57,17 @@ public class InterManageUIController extends AdminUIController {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO 显示股票信息、指数信息
+        // TODO 显示股票信息
         displaystock();
-        //目前还没有指数数据
+        bindstock();
+        // TODO 显示指数信息，但现在还没有
         //displayindex();
+        //bindindex();
+        super.initialize(url, rb);
+    }
 
-        // TODO 测试TableView能不能用
-        // TODO 股票数据显示
+    public void bindstock(){
+        // TODO 股票数据绑定TableView
         jfxstnametv.setCellValueFactory(new PropertyValueFactory<>("stockName"));
         jfxstlimittv.setCellValueFactory(new PropertyValueFactory<>("最大涨跌幅"));
         jfxstcodetv.setCellValueFactory(new PropertyValueFactory<>("stockCode"));
@@ -72,40 +78,27 @@ public class InterManageUIController extends AdminUIController {
         jfxstchangetv.setCellValueFactory(new PropertyValueFactory<>("涨跌幅"));
 
         stocktableview.setVisible(true);
-        jfxstnametv.setVisible(true);
         stocktableview.setEditable(false);
-        //stocktableview.setTableMenuButtonVisible(true);
-
-        System.out.println(stockObservableList.get(0).stockNameProperty());
-
-        // TODO 将stockArrayList里面的数据加到stockdata中
+        stocktableview.setTableMenuButtonVisible(true);
         stocktableview.setItems(stockObservableList);
+    }
 
-        // stockdata中的数据好像是空的？？？？？？？？？？？？？？？？？？
-        //System.out.println(stocktableview.getItems().get(0).stock_codeProperty());
-        //System.out.println("4");
-
-        // TODO 指数数据显示
-        /*
+    public void bindindex(){
+        // TODO 指数数据绑定TableView
         jfxinnametv.setCellValueFactory(new PropertyValueFactory<>("indexName"));
         jfxincodetv.setCellValueFactory(new PropertyValueFactory<>("indexCode"));
         jfxinnumtv.setCellValueFactory(new PropertyValueFactory<>("indexPrice"));
 
         indextableview.setVisible(true);
         indextableview.setEditable(false);
-
-        // TODO 将indexArrayList里面的数据加到indexdata中
         indextableview.setItems(indexObservableList);
-
-         */
-        super.initialize(url, rb);
     }
 
     public void clickintodetail() throws Exception{
         System.out.println("success");
         // TODO 将选中股票的isSelect状态设置为选中
         // 但是好像是改了之后才监听到的？？？？？？？？？
-        /*
+
         stocktableview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Stock>() {
                     @Override
                     public void changed(ObservableValue<? extends Stock> observable, Stock oldValue, Stock newValue) {
@@ -114,17 +107,12 @@ public class InterManageUIController extends AdminUIController {
                     }
                 }
                 );
-
-         */
         application.stage.close();
         getApp().gotoStockDetailUI();
     }
-
-
-
+    
     public void setstockstate(){
         // TODO 设置股票交易状态
-        /*
         for (int i = 0; i < stockObservableList.size()&&stockObservableList.get(i).isIsselect()==true; i++){
             String oldstate=stockObservableList.get(i).getStockState();
             if(oldstate.equals("正常交易")){
@@ -166,14 +154,11 @@ public class InterManageUIController extends AdminUIController {
             }
 
         }
-
-         */
         System.out.println("设置交易状态成功");
     }
 
     public void setstocklimit() throws Exception{
         // TODO 设置股票涨跌幅
-        /*
         double risefalllimit=0;
         try{
             risefalllimit=Double.parseDouble(JFXlimittext.getText());
@@ -221,7 +206,6 @@ public class InterManageUIController extends AdminUIController {
             System.out.println("设置涨跌幅失败");
         }
 
-         */
     }
 
     public void displaystock(){
@@ -253,10 +237,9 @@ public class InterManageUIController extends AdminUIController {
         } catch (ClassNotFoundException e2){
             e2.printStackTrace();
         }
-
-
-        // TODO 已经放到缓存StockArraylist中，然后显示到表格里
+        // TODO 已经放到缓存StockObservableList中，然后显示到表格里
         System.out.println("已经将股票数据导入缓存");
+
     }
 
     public void displayindex(){

@@ -12,7 +12,8 @@ public class Stock {
     private DoubleProperty ceilingPrice;
     private DoubleProperty floorPrice;
     private StringProperty stockState;
-    //private boolean isselect;
+    //private DoubleProperty stockLimit;
+    private boolean isselect;
 
     public Stock(String stockCode,String stockName,double stockPrice,double ceilingPrice,double floorPrice,String stockState){
         this.stockCode=new SimpleStringProperty(stockCode);
@@ -30,6 +31,7 @@ public class Stock {
         this.ceilingPrice=new SimpleDoubleProperty(0);
         this.floorPrice=new SimpleDoubleProperty(0);
         this.stockState=new SimpleStringProperty("");
+        //this.stockLimit=new SimpleDoubleProperty(0);
     }
 
     public void setStockCode(String stockCode) { this.stockCode.set(stockCode); }
@@ -38,7 +40,8 @@ public class Stock {
     public void setFloorPrice(double floorPrice) { this.floorPrice.set(floorPrice); }
     public void setStockPrice(double stockPrice) { this.stockPrice.set(stockPrice); }
     public void setStockState(String stockState) { this.stockState.set(stockState); }
-    //public boolean isIsselect() { return isselect; }
+    //public void setStockLimit(double stockLimit) { this.stockLimit.set(stockLimit); }
+    public boolean isIsselect() { return isselect; }
 
     public double getStockPrice() { return stockPrice.get(); }
     public String getStockCode() { return stockCode.get(); }
@@ -46,6 +49,7 @@ public class Stock {
     public double getCeilingPrice() { return ceilingPrice.get(); }
     public double getFloorPrice() { return floorPrice.get(); }
     public String getStockState() { return stockState.get(); }
+    //public double getStockLimit() { return stockLimit.get(); }
 
     public DoubleProperty ceilingPriceProperty() { return ceilingPrice; }
     public StringProperty stockCodeProperty() { return stockCode; }
@@ -53,5 +57,6 @@ public class Stock {
     public DoubleProperty floorPriceProperty() { return floorPrice; }
     public DoubleProperty stockPriceProperty() { return stockPrice; }
     public StringProperty stockStateProperty() { return stockState; }
-    //public void setIsselect(boolean isselect) { this.isselect = isselect; }
+    //public DoubleProperty stockLimitProperty() { return stockLimit; }
+    public void setIsselect(boolean isselect) { this.isselect = isselect; }
 }
