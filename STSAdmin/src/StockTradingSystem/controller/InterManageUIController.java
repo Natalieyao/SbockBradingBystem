@@ -102,6 +102,7 @@ public class InterManageUIController extends AdminUIController {
             @Override
             public void changed(ObservableValue<? extends Stock> observable, Stock oldValue, Stock newValue) {
                 newValue.setIsselect(true);
+                System.out.println("This");
                 System.out.println(newValue.getStockCode());
             }
         });
@@ -231,6 +232,8 @@ public class InterManageUIController extends AdminUIController {
                 st.setStockState(rs.getString("stock_state"));
                 st.setCeilingPrice(Double.valueOf(rs.getString("ceiling_price")));
                 st.setFloorPrice(Double.valueOf(rs.getString("floor_price")));
+                st.setStockLimit();
+                st.setStockChange();
                 stockObservableList.add(st);
             }
             conn.close();
