@@ -9,7 +9,6 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.sql.*;
@@ -97,8 +96,8 @@ public class InterManageUIController extends AdminUIController {
 
     public void clickintodetail() throws Exception{
         // TODO 将选中股票的isSelect状态设置为选中
-        // 但是好像是改了之后才监听到的？？？？？？？？？
-
+        //  但是好像是改了之后才监听到的？？？？？？？？？
+        //  监听器好像不对，现在选中另外一条可能导致原来改过的又改了一遍
         stocktableview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Stock>() {
             @Override
             public void changed(ObservableValue<? extends Stock> observable, Stock oldValue, Stock newValue) {
@@ -106,7 +105,7 @@ public class InterManageUIController extends AdminUIController {
                 System.out.println(newValue.getStockCode());
             }
         });
-        
+
         //application.stage.close();
         //getApp().gotoStockDetailUI();
     }
