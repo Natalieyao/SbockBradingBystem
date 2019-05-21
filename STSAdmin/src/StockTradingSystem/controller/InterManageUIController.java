@@ -108,12 +108,17 @@ public class InterManageUIController extends AdminUIController {
                 }
             }
         }
-        /*
-        if (stockSelected.size()==1){
-            application.stage.close();
-            getApp().gotoStockDetailUI();
-        }
-         */
+        stocktableview.setOnMouseClicked(event -> {
+            if (event.getClickCount()==2&&stockSelected.size()==1){
+                try {
+                    application.stage.close();
+                    getApp().gotoStockDetailUI();
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     public void setstockstate(){
