@@ -162,6 +162,7 @@ public class StockDetailUIController extends AdminUIController {
                 try {
                     // TODO 连接
                     Class.forName("com.mysql.cj.jdbc.Driver");
+                    //Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","599926");
                     Connection conn= DriverManager.getConnection("jdbc:mysql://139.155.104.140:3306/stock_trading_system" +
                             "?useSSL=false" +
                             "&serverTimezone=GMT" +
