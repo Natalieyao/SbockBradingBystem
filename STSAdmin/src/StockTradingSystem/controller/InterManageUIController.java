@@ -61,8 +61,8 @@ public class InterManageUIController extends AdminUIController {
         displaystock();
         bindstock();
         // TODO 显示指数信息，但现在还没有
-        //displayindex();
-        //bindindex();
+        displayindex();
+        bindindex();
         super.initialize(url, rb);
     }
 
