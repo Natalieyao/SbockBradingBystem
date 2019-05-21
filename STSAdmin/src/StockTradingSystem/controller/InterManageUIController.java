@@ -113,7 +113,6 @@ public class InterManageUIController extends AdminUIController {
             application.stage.close();
             getApp().gotoStockDetailUI();
         }
-
          */
     }
 

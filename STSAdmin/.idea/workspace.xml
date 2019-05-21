@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef6e9395-7927-44c4-8f9e-d17a7f114684" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -55,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+            <state relative-caret-position="559">
+              <caret line="114" column="9" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
               <folding>
                 <element signature="method#modifyPassword#0;class#InterManageUIController#0" />
                 <element signature="method#logout#0;class#InterManageUIController#0" />
@@ -379,7 +376,7 @@
       <workItem from="1557625226061" duration="79000" />
       <workItem from="1558259796329" duration="232000" />
       <workItem from="1558404838843" duration="2103000" />
-      <workItem from="1558407065264" duration="1629000" />
+      <workItem from="1558407065264" duration="2476000" />
     </task>
     <task id="LOCAL-00001" summary="first update">
       <created>1557049127551</created>
@@ -469,7 +466,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="109605000" />
+    <option name="totallyTimeSpent" value="110452000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -740,8 +737,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+        <state relative-caret-position="559">
+          <caret line="114" column="9" selection-start-line="114" selection-start-column="9" selection-end-line="114" selection-end-column="9" />
           <folding>
             <element signature="method#modifyPassword#0;class#InterManageUIController#0" />
             <element signature="method#logout#0;class#InterManageUIController#0" />
