@@ -37,7 +37,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../jsch-0.1.55/jsch-0.1.55.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../../temporary/jfoenix-9.0.8.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -46,7 +46,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../../../temporary/jfoenix-9.0.8.jar!/" />
+          <root url="jar://$MODULE_DIR$/../../../0518_b/jsch-0.1.55/jsch-0.1.55.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

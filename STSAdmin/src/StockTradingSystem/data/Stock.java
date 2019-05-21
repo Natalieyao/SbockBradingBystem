@@ -12,7 +12,7 @@ public class Stock {
     private DoubleProperty ceilingPrice;
     private DoubleProperty floorPrice;
     private StringProperty stockState;
-    //private boolean isselect;
+    private boolean isselect;
 
     public Stock(String stockCode,String stockName,double stockPrice,double ceilingPrice,double floorPrice,String stockState){
         this.stockCode=new SimpleStringProperty(stockCode);
@@ -38,7 +38,7 @@ public class Stock {
     public void setFloorPrice(double floorPrice) { this.floorPrice.set(floorPrice); }
     public void setStockPrice(double stockPrice) { this.stockPrice.set(stockPrice); }
     public void setStockState(String stockState) { this.stockState.set(stockState); }
-    //public boolean isIsselect() { return isselect; }
+    public boolean isIsselect() { return isselect; }
 
     public double getStockPrice() { return stockPrice.get(); }
     public String getStockCode() { return stockCode.get(); }
@@ -53,5 +53,5 @@ public class Stock {
     public DoubleProperty floorPriceProperty() { return floorPrice; }
     public DoubleProperty stockPriceProperty() { return stockPrice; }
     public StringProperty stockStateProperty() { return stockState; }
-    //public void setIsselect(boolean isselect) { this.isselect = isselect; }
+    public void setIsselect(boolean isselect) { this.isselect = isselect; }
 }
