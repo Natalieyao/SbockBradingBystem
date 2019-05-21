@@ -2,8 +2,6 @@ package StockTradingSystem.controller;
 
 import StockTradingSystem.Main;
 import com.jfoenix.controls.*;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -12,6 +10,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.net.URL;
 import java.sql.*;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class InterManageUIController extends AdminUIController {
@@ -96,21 +95,26 @@ public class InterManageUIController extends AdminUIController {
 
     public void clickintodetail() throws Exception{
         // TODO 将选中股票的isSelect状态设置为选中
-        //  但是好像是改了之后才监听到的？？？？？？？？？
-        //  监听器好像不对，现在选中另外一条可能导致原来改过的又改了一遍
-        stocktableview.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Stock>() {
-            @Override
-            public void changed(ObservableValue<? extends Stock> observable, Stock oldValue, Stock newValue) {
-                newValue.setIsselect(true);
-                Stock st1=stocktableview.getSelectionModel().getSelectedItem();
-                System.out.println(st1.getStockName());
-                System.out.println("This");
-                System.out.println(newValue.getStockCode());
+        //  单选、多选时先清空，再把选中的设置
+        stocktableview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        for (int i = 0; i < stockObservableList.size(); i++) {
+            stockObservableList.get(i).setIsselect(false);
+        }
+        List<Stock> stockSelected=stocktableview.getSelectionModel().getSelectedItems();
+        for (int i = 0; i < stockSelected.size(); i++) {
+            for (int j = 0; j < stockObservableList.size(); j++) {
+                if (stockSelected.get(i).equals(stockObservableList.get(j))){
+                    stockObservableList.get(j).setIsselect(true);
+                }
             }
-        });
+        }
+        /*
+        if (stockSelected.size()==1){
+            application.stage.close();
+            getApp().gotoStockDetailUI();
+        }
 
-        application.stage.close();
-        getApp().gotoStockDetailUI();
+         */
     }
 
     public void setstockstate(){
