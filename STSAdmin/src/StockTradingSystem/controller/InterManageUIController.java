@@ -102,13 +102,15 @@ public class InterManageUIController extends AdminUIController {
             @Override
             public void changed(ObservableValue<? extends Stock> observable, Stock oldValue, Stock newValue) {
                 newValue.setIsselect(true);
+                Stock st1=stocktableview.getSelectionModel().getSelectedItem();
+                System.out.println(st1.getStockName());
                 System.out.println("This");
                 System.out.println(newValue.getStockCode());
             }
         });
 
-        //application.stage.close();
-        //getApp().gotoStockDetailUI();
+        application.stage.close();
+        getApp().gotoStockDetailUI();
     }
 
     public void setstockstate(){
