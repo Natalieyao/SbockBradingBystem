@@ -51,6 +51,9 @@ public class Stock {
     public void setStockChange() {
         double startprice=(ceilingPrice.get()+floorPrice.get())/2;
         double change=(stockPrice.get()-startprice)/startprice;
+        if (change*100>-0.1 && change*100<0){
+            change=0;
+        }
         String tempchange=String.valueOf(Double.parseDouble(String.format("%.2f",change*100)))+"%";
         this.stockChange.set(tempchange);
     }
