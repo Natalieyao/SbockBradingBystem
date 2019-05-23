@@ -90,6 +90,7 @@ public class InterManageUIController extends AdminUIController {
 
         indextableview.setVisible(true);
         indextableview.setEditable(false);
+        indextableview.setTableMenuButtonVisible(true);
         indextableview.setItems(indexObservableList);
     }
 
