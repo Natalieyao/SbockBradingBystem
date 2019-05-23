@@ -223,12 +223,10 @@ public class InterManageUIController extends AdminUIController {
             application.createConfirmWarningUI();
             System.out.println("设置涨跌幅失败");
         }
-
     }
 
     public void displaystock(){
         // TODO 连接数据库，并将stock信息放到arraylist中
-
         try {
             // TODO 连接
             Class.forName("com.mysql.jdbc.Driver");
