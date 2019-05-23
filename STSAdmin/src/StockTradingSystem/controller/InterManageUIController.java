@@ -1,7 +1,6 @@
 package StockTradingSystem.controller;
 
 import StockTradingSystem.Main;
-import com.jfoenix.controls.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,9 +14,8 @@ import java.util.ResourceBundle;
 
 public class InterManageUIController extends AdminUIController {
     private Main application;
-    @FXML private JFXButton setstatebtn;
-    @FXML private JFXButton setlimitbtn;
-    @FXML private JFXTextField JFXlimittext;
+    @FXML private ChoiceBox<String> Choiceboxlimit;
+    @FXML private ChoiceBox<String> Choiceboxstate;
     @FXML private TableView<Stock> stocktableview;
     @FXML private TableColumn<Stock,String> jfxstnametv;    //股票名称列
     @FXML private TableColumn<Stock,String> jfxstlimittv;    //股票涨跌幅限制列
@@ -62,7 +60,20 @@ public class InterManageUIController extends AdminUIController {
         // TODO 显示指数信息，但现在还没有
         displayindex();
         bindindex();
+        // TODO 下拉框初始化
+        setChoicebox();
         super.initialize(url, rb);
+    }
+
+    public void setChoicebox(){
+        Choiceboxstate.getItems().add("正常交易");
+        Choiceboxstate.getItems().add("暂停交易");
+        Choiceboxstate.getItems().add("停牌三天");
+        Choiceboxstate.setValue("正常交易");
+        Choiceboxlimit.getItems().add("5%");
+        Choiceboxlimit.getItems().add("10%");
+        Choiceboxlimit.getItems().add("无限制");
+        Choiceboxlimit.setValue("10%");
     }
 
     public void bindstock(){
@@ -119,7 +130,6 @@ public class InterManageUIController extends AdminUIController {
                 }
             }
         });
-
     }
 
     public void setstockstate(){
@@ -128,102 +138,73 @@ public class InterManageUIController extends AdminUIController {
             if (!stockObservableList.get(i).isIsselect()){
                 continue;
             }
-            String oldState=stockObservableList.get(i).getStockState();
-            if(oldState.equals("正常交易")){
-                stockObservableList.get(i).setStockState("暂停交易");
-                // TODO 在数据库中更改状态
-                try {
-                    // TODO 连接
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
-                    // TODO 到数据库中设置当前股票状态
-                    PreparedStatement pStmt = conn.prepareStatement("UPDATE stock_trading_system.stock SET stock_state='暂停交易' WHERE stock_code=?");
-                    pStmt.setString(1,stockObservableList.get(i).getStockCode());
-                    pStmt.executeUpdate();
-                    conn.close();
-                } catch (SQLException e){
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e2){
-                    e2.printStackTrace();
-                }
-            }else{
-                stockObservableList.get(i).setStockState("正常交易");
-                // TODO 在数据库中更改状态
-                try {
-                    // TODO 连接
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
-                    // TODO 到数据库中设置当前股票状态
-                    PreparedStatement pStmt = conn.prepareStatement("UPDATE stock_trading_system.stock SET stock_state='正常交易' WHERE stock_code=?");
-                    pStmt.setString(1,stockObservableList.get(i).getStockCode());
-                    pStmt.executeUpdate();
-                    conn.close();
-                } catch (SQLException e){
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e2){
-                    e2.printStackTrace();
-                }
+            String newState=Choiceboxstate.getValue();
+            stockObservableList.get(i).setStockState(newState);
+            // TODO 在数据库中更改状态
+            try {
+                // TODO 连接
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
+                // TODO 到数据库中设置当前股票状态
+                PreparedStatement pStmt = conn.prepareStatement("UPDATE stock_trading_system.stock SET stock_state=? WHERE stock_code=?");
+                pStmt.setString(1,newState);
+                pStmt.setString(2,stockObservableList.get(i).getStockCode());
+                pStmt.executeUpdate();
+                conn.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            } catch (ClassNotFoundException e2){
+                e2.printStackTrace();
             }
-
         }
         System.out.println("设置交易状态成功");
     }
 
     public void setstocklimit() throws Exception{
         // TODO 设置股票涨跌幅
-        double riseFallLimit=0;
-        try{
-            riseFallLimit=Double.parseDouble(JFXlimittext.getText());
-            // TODO 防止将23e2这样的字符转化为2300，先检查一遍是否含有字母
-            String str=JFXlimittext.getText();
-            for(int i=0;i<str.length();i++){
-                if ((str.charAt(i)>='a' && str.charAt(i)<='z')||(str.charAt(i)>='A'&&str.charAt(i)<='Z')){
-                    throw new Exception();
-                }
-            }
-            // TODO 超出1或者小于0的设置为1和0
-            if (riseFallLimit>100 ||riseFallLimit<0){
-                application.createConfirmWarningUI();
-                JFXlimittext.clear();
-                if (riseFallLimit>100){riseFallLimit=1;}
-                else{riseFallLimit=0;}
-            }
-            riseFallLimit=riseFallLimit/100;
-            for (int i = 0; i < stockObservableList.size(); i++) {
-                if (!stockObservableList.get(i).isIsselect()){
-                    continue;
-                }
-                double highPrice=(1+riseFallLimit)*stockObservableList.get(i).getStockPrice();
-                double lowPrice=(1-riseFallLimit)*stockObservableList.get(i).getStockPrice();
-                stockObservableList.get(i).setCeilingPrice(highPrice);
-                stockObservableList.get(i).setFloorPrice(lowPrice);
-                stockObservableList.get(i).setStockLimit();
-                // TODO 在数据库中更改最大涨跌幅，即涨停价格和跌停价格
-                try {
-                    // TODO 连接
-                    Class.forName("com.mysql.jdbc.Driver");
-                    Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
-                    // TODO 到数据库中设置当前股票状态
-                    //String sql;
-                    PreparedStatement pStmt = conn.prepareStatement("UPDATE stock_trading_system.stock SET ceiling_price=?, floor_price=? WHERE stock_code=?");
-                    pStmt.setDouble(1,highPrice);
-                    pStmt.setDouble(2,lowPrice);
-                    pStmt.setString(3,stockObservableList.get(i).getStockCode());
-                    pStmt.executeUpdate();
-                    conn.close();
-                } catch (SQLException e){
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e2){
-                    e2.printStackTrace();
-                }
-            }
-            System.out.println("设置涨跌幅成功");
-
-        }catch (Exception e){
-            JFXlimittext.clear();
-            application.createConfirmWarningUI();
-            System.out.println("设置涨跌幅失败");
+        double riseFallLimit;
+        if (Choiceboxlimit.getValue().equals("5%")){
+            riseFallLimit=0.05;
+        }else if (Choiceboxlimit.getValue().equals("10%")){
+            riseFallLimit=0.1;
+        }else{
+            riseFallLimit=-1;
         }
+        for (int i = 0; i < stockObservableList.size(); i++) {
+            if (!stockObservableList.get(i).isIsselect()){
+                continue;
+            }
+            double highPrice,lowPrice;
+            if (riseFallLimit<=0){
+                // TODO 如果没有涨跌停限制，设置涨停价格为最大
+                highPrice=-1;
+                lowPrice=0;
+            }else{
+                highPrice=(1+riseFallLimit)*stockObservableList.get(i).getStockPrice();
+                lowPrice=(1-riseFallLimit)*stockObservableList.get(i).getStockPrice();
+            }
+            stockObservableList.get(i).setCeilingPrice(highPrice);
+            stockObservableList.get(i).setFloorPrice(lowPrice);
+            stockObservableList.get(i).setStockLimit();
+            // TODO 在数据库中更改最大涨跌幅，即涨停价格和跌停价格
+            try {
+                // TODO 连接
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
+                // TODO 到数据库中设置当前股票状态
+                PreparedStatement pStmt = conn.prepareStatement("UPDATE stock_trading_system.stock SET ceiling_price=?, floor_price=? WHERE stock_code=?");
+                pStmt.setDouble(1,highPrice);
+                pStmt.setDouble(2,lowPrice);
+                pStmt.setString(3,stockObservableList.get(i).getStockCode());
+                pStmt.executeUpdate();
+                conn.close();
+            } catch (SQLException e){
+                e.printStackTrace();
+            } catch (ClassNotFoundException e2){
+                e2.printStackTrace();
+            }
+        }
+        System.out.println("设置涨跌幅成功");
     }
 
     public void displaystock(){
@@ -258,7 +239,6 @@ public class InterManageUIController extends AdminUIController {
         }
         // TODO 已经放到缓存StockObservableList中，然后显示到表格里
         System.out.println("已经将股票数据导入缓存");
-
     }
 
     public void displayindex(){
@@ -270,8 +250,8 @@ public class InterManageUIController extends AdminUIController {
             Statement stmt = conn.createStatement();
             String sql;
             // TODO
-            //  哪一个是指数的数据库？？？？？？？？？？？？？？？？？？？
-            sql = "SELECT * FROM stock_trading_system.";
+            //  哪一个是指数的数据库？？？？？？？？？？？？？？？？
+            sql = "SELECT * FROM stock_trading_system";
             ResultSet rs = stmt.executeQuery(sql);
             while(rs.next()){
                 Index in = new Index();
