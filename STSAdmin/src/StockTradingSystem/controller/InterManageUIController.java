@@ -183,17 +183,22 @@ public class InterManageUIController extends AdminUIController {
                 }
             }
             // TODO 超出1或者小于0的设置为1和0
-            if (risefalllimit>1 ||risefalllimit<0){
+            if (risefalllimit>100 ||risefalllimit<0){
                 application.createConfirmWarningUI();
                 JFXlimittext.clear();
-                if (risefalllimit>1){risefalllimit=1;}
+                if (risefalllimit>100){risefalllimit=1;}
                 else{risefalllimit=0;}
             }
-            for (int i = 0; i < stockObservableList.size()&&stockObservableList.get(i).isIsselect()==true; i++) {
+            for (int i = 0; i < stockObservableList.size(); i++) {
+                if (!stockObservableList.get(i).isIsselect()){
+                    continue;
+                }
+                risefalllimit=risefalllimit/100;
                 double highprice=(1+risefalllimit)*stockObservableList.get(i).getStockPrice();
                 double lowprice=(1-risefalllimit)*stockObservableList.get(i).getStockPrice();
                 stockObservableList.get(i).setCeilingPrice(highprice);
                 stockObservableList.get(i).setFloorPrice(lowprice);
+                stockObservableList.get(i).setStockLimit();
                 // TODO 在数据库中更改最大涨跌幅，即涨停价格和跌停价格
                 try {
                     // TODO 连接
