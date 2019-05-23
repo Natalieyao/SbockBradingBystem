@@ -128,8 +128,8 @@ public class InterManageUIController extends AdminUIController {
             if (!stockObservableList.get(i).isIsselect()){
                 continue;
             }
-            String oldstate=stockObservableList.get(i).getStockState();
-            if(oldstate.equals("正常交易")){
+            String oldState=stockObservableList.get(i).getStockState();
+            if(oldState.equals("正常交易")){
                 stockObservableList.get(i).setStockState("暂停交易");
                 // TODO 在数据库中更改状态
                 try {
@@ -137,10 +137,9 @@ public class InterManageUIController extends AdminUIController {
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
                     // TODO 到数据库中设置当前股票状态
-                    Statement stmt = conn.createStatement();
-                    String sql;
-                    sql = "UPDATE stock_trading_system.stock SET stock_state='暂停交易' WHERE stock_code='"+stockObservableList.get(i).getStockCode()+"'";
-                    stmt.executeQuery(sql);
+                    PreparedStatement pStmt = conn.prepareStatement("UPDATE stock_trading_system.stock SET stock_state='暂停交易' WHERE stock_code=?");
+                    pStmt.setString(1,stockObservableList.get(i).getStockCode());
+                    pStmt.executeUpdate();
                     conn.close();
                 } catch (SQLException e){
                     e.printStackTrace();
@@ -155,10 +154,9 @@ public class InterManageUIController extends AdminUIController {
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
                     // TODO 到数据库中设置当前股票状态
-                    Statement stmt = conn.createStatement();
-                    String sql;
-                    sql = "UPDATE stock_trading_system.stock SET stock_state='正常交易' WHERE stock_code='"+stockObservableList.get(i).getStockCode()+"'";
-                    stmt.executeQuery(sql);
+                    PreparedStatement pStmt = conn.prepareStatement("UPDATE stock_trading_system.stock SET stock_state='正常交易' WHERE stock_code=?");
+                    pStmt.setString(1,stockObservableList.get(i).getStockCode());
+                    pStmt.executeUpdate();
                     conn.close();
                 } catch (SQLException e){
                     e.printStackTrace();
@@ -173,9 +171,9 @@ public class InterManageUIController extends AdminUIController {
 
     public void setstocklimit() throws Exception{
         // TODO 设置股票涨跌幅
-        double risefalllimit=0;
+        double riseFallLimit=0;
         try{
-            risefalllimit=Double.parseDouble(JFXlimittext.getText());
+            riseFallLimit=Double.parseDouble(JFXlimittext.getText());
             // TODO 防止将23e2这样的字符转化为2300，先检查一遍是否含有字母
             String str=JFXlimittext.getText();
             for(int i=0;i<str.length();i++){
@@ -184,21 +182,21 @@ public class InterManageUIController extends AdminUIController {
                 }
             }
             // TODO 超出1或者小于0的设置为1和0
-            if (risefalllimit>100 ||risefalllimit<0){
+            if (riseFallLimit>100 ||riseFallLimit<0){
                 application.createConfirmWarningUI();
                 JFXlimittext.clear();
-                if (risefalllimit>100){risefalllimit=1;}
-                else{risefalllimit=0;}
+                if (riseFallLimit>100){riseFallLimit=1;}
+                else{riseFallLimit=0;}
             }
+            riseFallLimit=riseFallLimit/100;
             for (int i = 0; i < stockObservableList.size(); i++) {
                 if (!stockObservableList.get(i).isIsselect()){
                     continue;
                 }
-                risefalllimit=risefalllimit/100;
-                double highprice=(1+risefalllimit)*stockObservableList.get(i).getStockPrice();
-                double lowprice=(1-risefalllimit)*stockObservableList.get(i).getStockPrice();
-                stockObservableList.get(i).setCeilingPrice(highprice);
-                stockObservableList.get(i).setFloorPrice(lowprice);
+                double highPrice=(1+riseFallLimit)*stockObservableList.get(i).getStockPrice();
+                double lowPrice=(1-riseFallLimit)*stockObservableList.get(i).getStockPrice();
+                stockObservableList.get(i).setCeilingPrice(highPrice);
+                stockObservableList.get(i).setFloorPrice(lowPrice);
                 stockObservableList.get(i).setStockLimit();
                 // TODO 在数据库中更改最大涨跌幅，即涨停价格和跌停价格
                 try {
@@ -206,10 +204,12 @@ public class InterManageUIController extends AdminUIController {
                     Class.forName("com.mysql.jdbc.Driver");
                     Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
                     // TODO 到数据库中设置当前股票状态
-                    Statement stmt = conn.createStatement();
-                    String sql;
-                    sql = "UPDATE stock_trading_system.stock SET ceiling_price="+highprice+", floor_price="+lowprice+" WHERE stock_code='"+stockObservableList.get(i).getStockCode()+"'";
-                    stmt.executeQuery(sql);
+                    //String sql;
+                    PreparedStatement pStmt = conn.prepareStatement("UPDATE stock_trading_system.stock SET ceiling_price=?, floor_price=? WHERE stock_code=?");
+                    pStmt.setDouble(1,highPrice);
+                    pStmt.setDouble(2,lowPrice);
+                    pStmt.setString(3,stockObservableList.get(i).getStockCode());
+                    pStmt.executeUpdate();
                     conn.close();
                 } catch (SQLException e){
                     e.printStackTrace();
