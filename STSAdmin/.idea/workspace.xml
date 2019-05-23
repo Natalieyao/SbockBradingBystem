@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef6e9395-7927-44c4-8f9e-d17a7f114684" name="Default Changelist" comment="" />
+    <list default="true" id="ef6e9395-7927-44c4-8f9e-d17a7f114684" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController.class" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +25,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-52">
+            <state relative-caret-position="2090">
               <caret line="107" column="27" selection-start-line="107" selection-start-column="27" selection-end-line="107" selection-end-column="27" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -34,8 +37,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+            <state relative-caret-position="66">
+              <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
               <folding>
                 <element signature="method#modifyPassword#0;class#InterManageUIController#0" />
                 <element signature="method#logout#0;class#InterManageUIController#0" />
@@ -47,6 +50,15 @@
                 <element signature="method#displaystock#0;class#InterManageUIController#0" />
                 <element signature="method#displayindex#0;class#InterManageUIController#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/Stock.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="889">
+              <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -134,9 +146,9 @@
         <option value="$PROJECT_DIR$/src/StockTradingSystem/fxml/ConfirmWarningUI.fxml" />
         <option value="$PROJECT_DIR$/src/StockTradingSystem/controller/ConfirmWarningUIController.java" />
         <option value="$PROJECT_DIR$/src/StockTradingSystem/Main.java" />
-        <option value="$PROJECT_DIR$/src/StockTradingSystem/controller/Stock.java" />
         <option value="$PROJECT_DIR$/src/StockTradingSystem/controller/Command.java" />
         <option value="$PROJECT_DIR$/src/StockTradingSystem/controller/StockDetailUIController.java" />
+        <option value="$PROJECT_DIR$/src/StockTradingSystem/controller/Stock.java" />
         <option value="$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java" />
       </list>
     </option>
@@ -151,7 +163,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -200,6 +211,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -360,6 +372,9 @@
       <workItem from="1558404838843" duration="2103000" />
       <workItem from="1558407065264" duration="2688000" />
       <workItem from="1558434121184" duration="947000" />
+      <workItem from="1558486256436" duration="839000" />
+      <workItem from="1558526500481" duration="2333000" />
+      <workItem from="1558573904329" duration="27000" />
     </task>
     <task id="LOCAL-00001" summary="first update">
       <created>1557049127551</created>
@@ -449,13 +464,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="111611000" />
+    <option name="totallyTimeSpent" value="114810000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.36691087" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3797314" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -670,13 +685,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/Stock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1100">
-          <caret line="53" column="91" selection-start-line="53" selection-start-column="91" selection-end-line="53" selection-end-column="91" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/fxml/StockDetailUI.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="519">
@@ -713,7 +721,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52">
+        <state relative-caret-position="2090">
           <caret line="107" column="27" selection-start-line="107" selection-start-column="27" selection-end-line="107" selection-end-column="27" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -728,10 +736,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/Stock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="889">
+          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+        <state relative-caret-position="66">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
           <folding>
             <element signature="method#modifyPassword#0;class#InterManageUIController#0" />
             <element signature="method#logout#0;class#InterManageUIController#0" />
