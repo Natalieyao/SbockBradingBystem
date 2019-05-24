@@ -105,7 +105,7 @@ public class InterManageUIController extends AdminUIController {
         indextableview.setItems(indexObservableList);
     }
 
-    public void clickintodetail() throws Exception{
+    public void clickintodetail(){
         // TODO 将选中股票的isSelect状态设置为选中
         //  单选、多选时先清空，再把选中的设置
         stocktableview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
