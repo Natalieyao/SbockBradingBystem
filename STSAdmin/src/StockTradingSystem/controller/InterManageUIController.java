@@ -1,14 +1,21 @@
 package StockTradingSystem.controller;
 
 import StockTradingSystem.Main;
+import StockTradingSystem.utils.AdminAccount;
+import StockTradingSystem.utils.CustomResp;
+import StockTradingSystem.utils.HttpCommon;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -62,6 +69,16 @@ public class InterManageUIController extends AdminUIController {
         bindindex();
         // TODO 下拉框初始化
         setChoicebox();
+        AdminAccount adminAccount = new AdminAccount("8888888888", "000000");
+        String json = new Gson().toJson(adminAccount);
+        //System.out.println(json);
+
+        CustomResp cr = new HttpCommon().doHttp("/admin/login", "POST", json);
+        //System.out.println(cr.getResultJSON());
+        //System.out.println(cr.getObjectJSON());
+        cr = new HttpCommon().doHttp("/admin/test", "GET", json);
+        //System.out.println(cr.getResultJSON());
+        //System.out.println(cr.getObjectJSON());
         super.initialize(url, rb);
     }
 
@@ -134,6 +151,7 @@ public class InterManageUIController extends AdminUIController {
 
     public void setstockstate(){
         // TODO 设置股票交易状态
+        /*
         for (int i = 0; i < stockObservableList.size(); i++){
             if (!stockObservableList.get(i).isIsselect()){
                 continue;
@@ -157,6 +175,13 @@ public class InterManageUIController extends AdminUIController {
                 e2.printStackTrace();
             }
         }
+         */
+
+        AdminAccount adminAccount = new AdminAccount("8888888888", "000000");
+        String json = new Gson().toJson(adminAccount);
+
+        CustomResp cr = new HttpCommon().doHttp("/stock/update_list", "POST", json);
+
         System.out.println("设置交易状态成功");
     }
 
@@ -170,6 +195,7 @@ public class InterManageUIController extends AdminUIController {
         }else{
             riseFallLimit=-1;
         }
+        /*
         for (int i = 0; i < stockObservableList.size(); i++) {
             if (!stockObservableList.get(i).isIsselect()){
                 continue;
@@ -204,11 +230,19 @@ public class InterManageUIController extends AdminUIController {
                 e2.printStackTrace();
             }
         }
+         */
+
+        AdminAccount adminAccount = new AdminAccount("8888888888", "000000");
+        String json = new Gson().toJson(adminAccount);
+
+        CustomResp cr = new HttpCommon().doHttp("/stock/update_list", "POST", json);
+
         System.out.println("设置涨跌幅成功");
     }
 
     public void displaystock(){
         // TODO 连接数据库，并将stock信息放到arraylist中
+        /*
         try {
             // TODO 连接
             Class.forName("com.mysql.jdbc.Driver");
@@ -237,14 +271,28 @@ public class InterManageUIController extends AdminUIController {
         } catch (ClassNotFoundException e2){
             e2.printStackTrace();
         }
+         */
+
+        AdminAccount adminAccount = new AdminAccount("8888888888", "000000");
+        String json = new Gson().toJson(adminAccount);
+
+        CustomResp cr = new HttpCommon().doHttp("/stock/all", "GET", json);
+        Type listType = new TypeToken<ArrayList<Stock>>(){}.getType();
+        List<Stock> stocks = new Gson().fromJson(cr.getObjectJSON(), listType);
+        for (int i = 0; i < stocks.size(); i++) {
+            stockObservableList.add(stocks.get(i));
+        }
+
         // TODO 已经放到缓存StockObservableList中，然后显示到表格里
         System.out.println("已经将股票数据导入缓存");
     }
 
     public void displayindex(){
         // TODO 连接数据库，并将index信息放到arraylist中，与stock类似
+        /*
         try {
             // TODO 连接
+
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
             Statement stmt = conn.createStatement();
@@ -266,6 +314,18 @@ public class InterManageUIController extends AdminUIController {
         } catch (ClassNotFoundException e2){
             e2.printStackTrace();
         }
+         */
+
+        AdminAccount adminAccount = new AdminAccount("8888888888", "000000");
+        String json = new Gson().toJson(adminAccount);
+
+        CustomResp cr = new HttpCommon().doHttp("/index/all", "GET", json);
+        Type listType = new TypeToken<ArrayList<Stock>>(){}.getType();
+        List<Index> indexs = new Gson().fromJson(cr.getObjectJSON(), listType);
+        for (int i = 0; i < indexs.size(); i++) {
+            indexObservableList.add(indexs.get(i));
+        }
+
         // TODO 已经放到缓存IndexArraylist中，然后显示到表格里
         System.out.println("已经将指数数据导入到缓存");
     }
