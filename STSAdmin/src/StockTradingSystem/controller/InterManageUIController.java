@@ -130,32 +130,7 @@ public class InterManageUIController extends AdminUIController {
 
     public void setstockstate(){
         // TODO 设置股票交易状态
-        /*
-        for (int i = 0; i < stockObservableList.size(); i++){
-            if (!stockObservableList.get(i).isIsselect()){
-                continue;
-            }
-            String newState=Choiceboxstate.getValue();
-            stockObservableList.get(i).setStockState(newState);
-            // TODO 在数据库中更改状态
-            try {
-                // TODO 连接
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
-                // TODO 到数据库中设置当前股票状态
-                PreparedStatement pStmt = conn.prepareStatement("UPDATE stock_trading_system.stock SET stock_state=? WHERE stock_code=?");
-                pStmt.setString(1,newState);
-                pStmt.setString(2,stockObservableList.get(i).getStockCode());
-                pStmt.executeUpdate();
-                conn.close();
-            } catch (SQLException e){
-                e.printStackTrace();
-            } catch (ClassNotFoundException e2){
-                e2.printStackTrace();
-            }
-        }
-         */
-
+        
         // TODO 获取要修改的状态
         String newState=Choiceboxstate.getValue();
         String setState;
@@ -200,43 +175,6 @@ public class InterManageUIController extends AdminUIController {
         }else{
             riseFallLimit=-1;
         }
-        /*
-        for (int i = 0; i < stockObservableList.size(); i++) {
-            if (!stockObservableList.get(i).isIsselect()){
-                continue;
-            }
-            double highPrice,lowPrice;
-            if (riseFallLimit<=0){
-                // TODO 如果没有涨跌停限制，设置涨停价格为最大
-                highPrice=-1;
-                lowPrice=0;
-            }else{
-                highPrice=(1+riseFallLimit)*stockObservableList.get(i).getStockPrice();
-                lowPrice=(1-riseFallLimit)*stockObservableList.get(i).getStockPrice();
-            }
-            stockObservableList.get(i).setCeilingPrice(highPrice);
-            stockObservableList.get(i).setFloorPrice(lowPrice);
-            stockObservableList.get(i).setStockLimit();
-            // TODO 在数据库中更改最大涨跌幅，即涨停价格和跌停价格
-            try {
-                // TODO 连接
-                Class.forName("com.mysql.jdbc.Driver");
-                Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
-                // TODO 到数据库中设置当前股票状态
-                PreparedStatement pStmt = conn.prepareStatement("UPDATE stock_trading_system.stock SET ceiling_price=?, floor_price=? WHERE stock_code=?");
-                pStmt.setDouble(1,highPrice);
-                pStmt.setDouble(2,lowPrice);
-                pStmt.setString(3,stockObservableList.get(i).getStockCode());
-                pStmt.executeUpdate();
-                conn.close();
-            } catch (SQLException e){
-                e.printStackTrace();
-            } catch (ClassNotFoundException e2){
-                e2.printStackTrace();
-            }
-        }
-         */
-
         List<StockProperty> stockSelected=stocktableview.getSelectionModel().getSelectedItems();
 
         // TODO 修改显示的信息
@@ -278,38 +216,6 @@ public class InterManageUIController extends AdminUIController {
     }
 
     public void displaystock(){
-        // TODO 连接数据库，并将stock信息放到arraylist中
-        /*
-        try {
-            // TODO 连接
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
-            // TODO 到数据库中查询当前股票名称
-            Statement stmt = conn.createStatement();
-            String sql;
-            sql = "SELECT * FROM stock_trading_system.stock";
-            ResultSet rs = stmt.executeQuery(sql);
-            // TODO 放到st中
-            while(rs.next()){
-                Stock st=new Stock();
-                st.setStockCode(rs.getString("stock_code"));
-                st.setStockName(rs.getString("stock_name"));
-                st.setStockPrice(Double.valueOf(rs.getString("stock_price")));
-                st.setStockState(rs.getString("stock_state"));
-                st.setCeilingPrice(Double.valueOf(rs.getString("ceiling_price")));
-                st.setFloorPrice(Double.valueOf(rs.getString("floor_price")));
-                st.setStockLimit();
-                st.setStockChange();
-                stockObservableList.add(st);
-            }
-            conn.close();
-        } catch (SQLException e){
-            e.printStackTrace();
-        } catch (ClassNotFoundException e2){
-            e2.printStackTrace();
-        }
-         */
-
         CustomResp cr = new HttpCommon().doHttp("/stock/all", "GET", null);
         Type listType = new TypeToken<ArrayList<Stock>>(){}.getType();
         List<Stock> stocks = new Gson().fromJson(cr.getObjectJSON(), listType);
@@ -322,32 +228,6 @@ public class InterManageUIController extends AdminUIController {
     }
 
     public void displayindex(){
-        // TODO 连接数据库，并将index信息放到arraylist中，与stock类似
-        /*
-        try {
-            // TODO 连接
-
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection conn= DriverManager.getConnection("jdbc:mysql://localhost:3306/stock_trading_system", "root","12345678");
-            Statement stmt = conn.createStatement();
-            String sql;
-            sql = "SELECT * FROM stock_trading_system";
-            ResultSet rs = stmt.executeQuery(sql);
-            while(rs.next()){
-                Index in = new Index();
-                in.setIndexCode(rs.getString("index_code"));
-                in.setIndexName(rs.getString("index_name"));
-                in.setIndexPrice(Double.valueOf(rs.getString("index_price")));
-                indexObservableList.add(in);
-            }
-            conn.close();
-        } catch (SQLException e){
-            e.printStackTrace();
-        } catch (ClassNotFoundException e2){
-            e2.printStackTrace();
-        }
-         */
-
         CustomResp cr = new HttpCommon().doHttp("/index/all", "GET", null);
         Type listType = new TypeToken<ArrayList<Index>>(){}.getType();
         List<Index> indexs = new Gson().fromJson(cr.getObjectJSON(), listType);
