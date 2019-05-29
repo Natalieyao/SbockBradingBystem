@@ -1,24 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ef6e9395-7927-44c4-8f9e-d17a7f114684" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/ConfirmWarningUIController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/controller/InterManageUIController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/fxml/ChangePasswordUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/fxml/ChangePasswordUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/fxml/ConfirmWarningUI.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/utils/HttpCommon.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JavaTest/StockTradingSystem/utils/HttpCommon.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StockTradingSystem/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StockTradingSystem/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StockTradingSystem/controller/ConfirmWarningUIController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StockTradingSystem/controller/ControllerUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StockTradingSystem/controller/ControllerUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StockTradingSystem/fxml/ChangePasswordUI.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/StockTradingSystem/fxml/ChangePasswordUI.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StockTradingSystem/fxml/ConfirmWarningUI.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StockTradingSystem/utils/HttpCommon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/StockTradingSystem/utils/HttpCommon.java" afterDir="false" />
-    </list>
+    <list default="true" id="ef6e9395-7927-44c4-8f9e-d17a7f114684" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/ControllerUtils.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="432">
-              <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+            <state relative-caret-position="383">
+              <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="124">
+            <state relative-caret-position="-1174">
               <caret line="164" column="23" selection-start-line="164" selection-start-column="23" selection-end-line="164" selection-end-column="23" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -391,7 +374,7 @@
       <workItem from="1558866035723" duration="1850000" />
       <workItem from="1558870055596" duration="2977000" />
       <workItem from="1559040424518" duration="8780000" />
-      <workItem from="1559115752321" duration="5236000" />
+      <workItem from="1559115752321" duration="5387000" />
     </task>
     <task id="LOCAL-00001" summary="first update">
       <created>1557049127551</created>
@@ -488,7 +471,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143373000" />
+    <option name="totallyTimeSpent" value="143524000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -503,7 +486,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.61118597" weight="0.1255102" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.57448107" visible="true" weight="0.24183674" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.57448107" weight="0.24183674" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3989796" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -813,16 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/ControllerUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="432">
-          <caret line="53" column="21" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/ConfirmingModificationUIController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="359">
@@ -846,7 +819,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/InterManageUIController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="124">
+        <state relative-caret-position="-1174">
           <caret line="164" column="23" selection-start-line="164" selection-start-column="23" selection-end-line="164" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -857,6 +830,16 @@
             <element signature="method#bindstock#0;class#InterManageUIController#0" />
             <element signature="method#bindindex#0;class#InterManageUIController#0" />
             <element signature="method#displayindex#0;class#InterManageUIController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StockTradingSystem/controller/ControllerUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="46" column="45" selection-start-line="46" selection-start-column="45" selection-end-line="46" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
