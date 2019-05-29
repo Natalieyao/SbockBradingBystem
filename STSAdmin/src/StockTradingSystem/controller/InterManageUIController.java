@@ -128,7 +128,7 @@ public class InterManageUIController extends AdminUIController {
         });
     }
 
-    public void setstockstate(){
+    public void setstockstate() throws Exception{
         // TODO 设置股票交易状态
         
         // TODO 获取要修改的状态
@@ -162,6 +162,12 @@ public class InterManageUIController extends AdminUIController {
         String json = new Gson().toJson(stockList);
         CustomResp cr = new HttpCommon().doHttp("/stock/update_list/state/"+setState, "POST", json);
 
+        // TODO 跳转到提示界面
+        if (cr.getResultJSON().substring(10,14).equals("true")){
+            ControllerUtils.showAlert("[成功] 修改股票交易状态成功！");
+        }else {
+            ControllerUtils.showAlert("[失败] 修改股票交易状态失败！");
+        }
         System.out.println("设置交易状态成功");
     }
 
@@ -211,6 +217,13 @@ public class InterManageUIController extends AdminUIController {
             riseFallLimitTemp=riseFallLimit*100;
         }
         CustomResp cr = new HttpCommon().doHttp("/stock/update_list/limit/"+riseFallLimitTemp, "POST", json);
+
+        // TODO 跳转到提示界面
+        if (cr.getResultJSON().substring(10,14).equals("true")){
+            ControllerUtils.showAlert("[成功] 修改股票涨跌幅成功！");
+        }else {
+            ControllerUtils.showAlert("[失败] 修改股票涨跌幅失败！");
+        }
 
         System.out.println("设置涨跌幅成功");
     }

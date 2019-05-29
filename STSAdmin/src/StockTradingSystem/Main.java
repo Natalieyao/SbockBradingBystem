@@ -46,27 +46,6 @@ public class Main extends Application {
         changePasswordUI.setApp(this);
     }
 
-    public void createConfirmWarningUI() throws Exception {
-        floatStage = new Stage();
-        floatStage.setTitle("Warning");
-        floatStage.setResizable(false);
-        FXMLLoader loader = new FXMLLoader();
-        InputStream in = Main.class.getResourceAsStream("fxml/ConfirmWarningUI.fxml");
-        loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(Main.class.getResource("fxml/ConfirmWarningUI.fxml"));
-        AnchorPane page;
-        try {
-            page = loader.load();
-        } finally {
-            in.close();
-        }
-        Scene scene = new Scene(page);
-        floatStage.setScene(scene);
-        floatStage.show();
-        ConfirmWarningUIController confirmWarningUI= loader.getController();
-        confirmWarningUI.setApp(this);
-    }
-
     public void gotoAdminLoginUI() throws Exception {
         stage = new Stage();
         stage.setResizable(false);
