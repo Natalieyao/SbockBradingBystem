@@ -17,6 +17,24 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Class InterManageUIController extend from AdminUIController.
+ * The {@code setApp} method is used to set application.
+ * The {@code getApp} method is used to set application.
+ * The {@code modifyPassword} method is used to go to modifyPasswordUI.
+ * The {@code logout} method is used to logout the account and go back to AdminLoginUI.
+ * The {@code quit} method is used to quit application.
+ * The {@code initialize} method is used to initialize application.
+ * The {@code setChoicebox} method is used to set Choicebox and add choice into it.
+ * The {@code bindstock} method is used to bind stock information with TableView.
+ * The {@code bindindex} method is used to bind index information with TableView.
+ * The {@code clickintodetail} method is used to go to the StockDetailUIController.
+ * The {@code setstockstate} method is used to set stock state.
+ * The {@code setstocklimit} method is used to set stock limit.
+ * The {@code displaystock} method is used to get stock information from database.
+ * The {@code displayindex} method is used to get index information from database.
+ */
+
 public class InterManageUIController extends AdminUIController {
     private Main application;
     @FXML private ChoiceBox<String> Choiceboxlimit;
