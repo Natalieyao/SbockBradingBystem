@@ -60,10 +60,10 @@ public class StockProperty {
     public void setStockPrice(double stockPrice) { this.stockPrice.set(stockPrice); }
     public void setStockState(String stockState) { this.stockState.set(stockState); }
     public void setStockLimit() {
-        double startprice=(Double.valueOf(ceilingPrice.get())+floorPrice.get())/2;
-        double limit=(Double.valueOf(ceilingPrice.get())-startprice)/startprice;
-        String templimit=Double.parseDouble(String.format("%.2f",limit*100))+"%";
-        this.stockLimit.set(templimit);
+        double startPrice=(Double.valueOf(ceilingPrice.get())+floorPrice.get())/2;
+        double limit=(Double.valueOf(ceilingPrice.get())-startPrice)/startPrice;
+        String tempLimit=Double.parseDouble(String.format("%.2f",limit*100))+"%";
+        this.stockLimit.set(tempLimit);
     }
     public void setStockChange() {
         double startprice=(Double.valueOf(ceilingPrice.get())+floorPrice.get())/2;
@@ -71,8 +71,8 @@ public class StockProperty {
         if (change*100>-0.1 && change*100<0){
             change=0;
         }
-        String tempchange=Double.parseDouble(String.format("%.2f",change*100))+"%";
-        this.stockChange.set(tempchange);
+        String tempChange=Double.parseDouble(String.format("%.2f",change*100))+"%";
+        this.stockChange.set(tempChange);
     }
 
     public double getStockPrice() { return stockPrice.get(); }
