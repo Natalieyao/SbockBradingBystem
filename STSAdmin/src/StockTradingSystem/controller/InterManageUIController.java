@@ -28,9 +28,9 @@ import java.util.ResourceBundle;
  * The {@code setChoiceBox} method is used to set Choicebox and add choice into it.
  * The {@code bindStock} method is used to bind stock information with TableView.
  * The {@code bindIndex} method is used to bind index information with TableView.
- * The {@code clickintodetail} method is used to go to the StockDetailUIController.
- * The {@code setstockstate} method is used to set stock state.
- * The {@code setstocklimit} method is used to set stock limit.
+ * The {@code clickIntoDetail} method is used to go to the StockDetailUIController.
+ * The {@code setStockState} method is used to set stock state.
+ * The {@code setStockLimit} method is used to set stock limit.
  * The {@code displayStock} method is used to get stock information from database.
  * The {@code displayIndex} method is used to get index information from database.
  */
