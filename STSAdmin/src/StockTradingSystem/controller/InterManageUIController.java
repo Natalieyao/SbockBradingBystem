@@ -25,7 +25,7 @@ import java.util.ResourceBundle;
  * The {@code logout} method is used to logout the account and go back to AdminLoginUI.
  * The {@code quit} method is used to quit application.
  * The {@code initialize} method is used to initialize application.
- * The {@code setChoiceBox} method is used to set Choicebox and add choice into it.
+ * The {@code setChoiceBox} method is used to set ChoiceBox and add choice into it.
  * The {@code bindStock} method is used to bind stock information with TableView.
  * The {@code bindIndex} method is used to bind index information with TableView.
  * The {@code clickIntoDetail} method is used to go to the StockDetailUIController.
@@ -266,7 +266,7 @@ public class InterManageUIController extends AdminUIController {
             indexObservableList.add(new IndexProperty(indexs.get(i)));
         }
 
-        // TODO 已经放到缓存IndexArraylist中，然后显示到表格里
+        // TODO 已经放到缓存IndexObservableList中，然后显示到表格里
         System.out.println("已经将指数数据导入到缓存");
     }
 }
