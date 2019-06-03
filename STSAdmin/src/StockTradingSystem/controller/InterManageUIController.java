@@ -261,9 +261,9 @@ public class InterManageUIController extends AdminUIController {
     public void displayIndex(){
         CustomResp cr = new HttpCommon().doHttp("/index/all", "GET", null);
         Type listType = new TypeToken<ArrayList<Index>>(){}.getType();
-        List<Index> indexs = new Gson().fromJson(cr.getObjectJSON(), listType);
-        for (int i = 0; i < indexs.size(); i++) {
-            indexObservableList.add(new IndexProperty(indexs.get(i)));
+        List<Index> indexes = new Gson().fromJson(cr.getObjectJSON(), listType);
+        for (int i = 0; i < indexes.size(); i++) {
+            indexObservableList.add(new IndexProperty(indexes.get(i)));
         }
 
         // TODO 已经放到缓存IndexObservableList中，然后显示到表格里
