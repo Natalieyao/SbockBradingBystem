@@ -13,9 +13,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.lang.reflect.Type;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 /**
  * Class InterManageUIController extend from AdminUIController.
@@ -54,6 +52,17 @@ public class InterManageUIController extends AdminUIController {
     @FXML private TableColumn<IndexProperty,String> indexNumericTableView;    //指数数值列
     private ObservableList<StockProperty> stockObservableList = FXCollections.observableArrayList();
     private ObservableList<IndexProperty> indexObservableList = FXCollections.observableArrayList();
+    private Timer timer = new Timer();
+    private TimerTask display = new TimerTask() {
+        @Override
+        public void run() {
+            displayStock();
+            bindStock();
+            displayIndex();
+            bindIndex();
+            System.gc();
+        }
+    };
 
     public void setApp(Main app) { this.application = app; }
     public Main getApp() {return this.application; }
@@ -80,12 +89,18 @@ public class InterManageUIController extends AdminUIController {
         // TODO 显示股票信息
         displayStock();
         bindStock();
-        // TODO 显示指数信息，但现在还没有
+        // TODO 显示指数信息
         displayIndex();
         bindIndex();
         // TODO 下拉框初始化
         setChoiceBox();
+
+        startTimerLoop();
         super.initialize(url, rb);
+    }
+
+    public void startTimerLoop(){
+        timer.schedule(display,100,1000);
     }
 
     public void setChoiceBox(){
