@@ -61,6 +61,9 @@ public class InterManageUIController extends AdminUIController {
             displayIndex();
             bindIndex();
             System.gc();
+            if (application.flag){
+                cancel();
+            }
         }
     };
 

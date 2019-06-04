@@ -15,6 +15,7 @@ import java.io.InputStream;
 public class Main extends Application {
     public Stage stage;
     public Stage floatStage;
+    public boolean flag;
 
     /* 用于界面拖拽 */
     private double x0, y0, x_stage, y_stage;
@@ -23,6 +24,12 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         gotoAdminLoginUI();
+        flag=false;
+    }
+
+    @Override
+    public void stop(){
+        flag=true;
     }
 
     public void createChangePasswordUI() throws Exception {

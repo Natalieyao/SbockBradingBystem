@@ -14,7 +14,7 @@ public class AdminUIController implements Initializable {
     public Main getApp() {return this.application; }
 
     @Override
-    public void initialize(URL url, ResourceBundle rb){}
+    public void initialize(URL url, ResourceBundle rb){ }
 
     public void personalInfo() {
         // TODO: 增加个人信息跳出窗口
