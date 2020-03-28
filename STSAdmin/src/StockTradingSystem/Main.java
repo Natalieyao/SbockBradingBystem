@@ -2,12 +2,10 @@ package StockTradingSystem;
 
 import StockTradingSystem.controller.*;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.fxml.JavaFXBuilderFactory;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,6 +15,7 @@ import java.io.InputStream;
 public class Main extends Application {
     public Stage stage;
     public Stage floatStage;
+    public boolean flag;
 
     /* 用于界面拖拽 */
     private double x0, y0, x_stage, y_stage;
@@ -25,6 +24,12 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         stage = primaryStage;
         gotoAdminLoginUI();
+        flag=false;
+    }
+
+    @Override
+    public void stop(){
+        flag=true;
     }
 
     public void createChangePasswordUI() throws Exception {
@@ -46,27 +51,6 @@ public class Main extends Application {
         floatStage.show();
         ChangePasswordUIController changePasswordUI = loader.getController();
         changePasswordUI.setApp(this);
-    }
-
-    public void createConfirmWarningUI() throws Exception {
-        floatStage = new Stage();
-        floatStage.setTitle("Warning");
-        floatStage.setResizable(false);
-        FXMLLoader loader = new FXMLLoader();
-        InputStream in = Main.class.getResourceAsStream("fxml/ConfirmWarningUI.fxml");
-        loader.setBuilderFactory(new JavaFXBuilderFactory());
-        loader.setLocation(Main.class.getResource("fxml/ConfirmWarningUI.fxml"));
-        AnchorPane page;
-        try {
-            page = loader.load();
-        } finally {
-            in.close();
-        }
-        Scene scene = new Scene(page);
-        floatStage.setScene(scene);
-        floatStage.show();
-        ConfirmWarningUIController confirmWarningUI= loader.getController();
-        confirmWarningUI.setApp(this);
     }
 
     public void gotoAdminLoginUI() throws Exception {

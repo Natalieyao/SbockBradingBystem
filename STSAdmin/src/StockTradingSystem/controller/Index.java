@@ -1,15 +1,17 @@
 package StockTradingSystem.controller;
 
 public class Index {
-    private String Index_code;
-    private String Index_name;
-    private double Index_price;
+    private String indexCode;
+    private String indexName;
+    private Double indexPrice;
 
-    public double getIndex_price() { return Index_price; }
-    public String getIndex_code() { return Index_code; }
-    public String getIndex_name() { return Index_name; }
+    public Index(){}
 
-    public void setIndex_code(String index_code) { this.Index_code = index_code; }
-    public void setIndex_name(String index_name) { this.Index_name = index_name; }
-    public void setIndex_price(double index_price) { this.Index_price = index_price; }
+    public void setIndexPrice(Double indexPrice) { this.indexPrice = indexPrice; }
+    public void setIndexName(String indexName) { this.indexName = indexName; }
+    public void setIndexCode(String indexCode) { this.indexCode = indexCode; }
+
+    public Double getIndexPrice() { return indexPrice; }
+    public String getIndexCode() { return indexCode; }
+    public String getIndexName() { return indexName; }
 }
